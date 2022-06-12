@@ -1,8 +1,12 @@
 package hello.jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * packageName    : hello.jpa
@@ -16,28 +20,33 @@ import javax.persistence.Table;
  * 2022-05-29        men16       최초 생성
  */
 
+
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@Table(name = "MEMBER")
 public class Member {
 
     @Id
     private Long id;
 
-    private String name;
+    @Column(name = "name", nullable = false)
+    private String userName;
 
-    public Long getId() {
-        return id;
-    }
+    private Integer age;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
 
-    public String getName() {
-        return name;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Lob
+    private String description;
+
 }
 
