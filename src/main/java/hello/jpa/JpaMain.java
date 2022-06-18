@@ -28,15 +28,27 @@ public class JpaMain {
         //code
         try {
 
-            Member member = new Member();
-            member.setId(1L);
-            member.setUserName("A");
-            member.setRoleType(RoleType.USER);
-            member.setAge(10);
+            Member member1 = new Member();
+            member1.setUserName("A");
 
-            em.persist(member);
+            Member member2 = new Member();
+            member2.setUserName("B");
+
+            Member member3 = new Member();
+            member3.setUserName("C");
 
             System.out.println("============");
+
+            em.persist(member1);
+            em.persist(member2);
+            em.persist(member3);
+
+            System.out.println("member.id = " + member1.getId());
+            System.out.println("member.id = " + member2.getId());
+            System.out.println("member.id = " + member3.getId());
+
+            System.out.println("============");
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
