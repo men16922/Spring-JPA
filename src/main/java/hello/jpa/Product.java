@@ -1,40 +1,32 @@
 package hello.jpa;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * packageName    : hello.jpa
- * fileName       : Member
+ * fileName       : Product
  * author         : men16
- * date           : 2022-05-29
+ * date           : 2022-10-16
  * description    :
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
- * 2022-05-29        men16       최초 생성
+ * 2022-10-16        men16       최초 생성
  */
-
-@Getter
-@Setter
 @Entity
-public class Member {
+public class Product {
 
     @Id @GeneratedValue
-    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "USERNAME", nullable = false)
-    private String userName;
+    private String name;
 
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
-
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "product")
     private List<MemberProduct> memberProducts = new ArrayList<>();
 }
+
