@@ -30,7 +30,7 @@ public class Member {
     @Column(name = "USERNAME", nullable = false)
     private String userName;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
-    private Team team;
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
 }
